@@ -16,6 +16,8 @@ from pathlib import Path
 
 from decouple import config
 
+AUTH_USER_MODEL = "users.User"
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 sys.path.append(os.path.join(BASE_DIR, "apps"))
@@ -43,6 +45,7 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     # Local apps
     "base",
+    "users",
 ]
 
 MIDDLEWARE = [
