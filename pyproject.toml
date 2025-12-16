@@ -35,7 +35,15 @@ black = "^25.11.0"
 isort = "^7.0.0"
 pre-commit = "^4.4.0"
 pytest = "^9.0.1"
+pytest-django = "^4.11.1"
 
 [build-system]
 requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
+
+
+[tool.pytest.ini_options]
+pythonpath = [".", "apps"]
+testpaths = ["tests"]
+DJANGO_SETTINGS_MODULE = "core.settings"
+addopts = "--nomigrations --reuse-db"
