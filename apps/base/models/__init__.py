@@ -1,8 +1,8 @@
 from .base_model import (
+    AllObjectsManager,
     BaseManager,
     BaseModel,
     BaseQuerySet,
-    AllObjectsManager,
     TimestampsOnlyBaseModel,
 )
 
