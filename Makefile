@@ -50,6 +50,12 @@ dev/up: deps-check
 	@echo "${GREEN}Starting development environment${RESET}"
 	docker compose --env-file .env up
 
+## Starts detached development environment
+.PHONY: dev/up-d
+dev/up-d: deps-check
+	@echo "${GREEN}Starting detached development environment${RESET}"
+	docker compose --env-file .env up -d
+
 ## Stops and removes running containers
 .PHONY: dev/down
 dev/down:
