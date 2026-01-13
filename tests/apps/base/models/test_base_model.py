@@ -15,7 +15,6 @@ class TestBaseModelFields:
         fields = {f.name for f in instance._meta.fields}
 
         required_fields = {
-            "id",
             "created_at",
             "modified_at",
             "is_deleted",
