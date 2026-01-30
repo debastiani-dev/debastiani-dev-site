@@ -48,7 +48,7 @@ class BaseModel(models.Model):
         unique=True,
         verbose_name=_("uuid"),
         db_index=True,
-        primary_key=True
+        primary_key=True,
     )
     is_deleted = models.BooleanField(default=False, db_index=True)
 

@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     # Local apps
     "base",
     "users",
+    "portfolio",
 ]
 
 MIDDLEWARE = [

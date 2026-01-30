@@ -1,6 +1,7 @@
-import pytest
-import uuid
 import datetime
+import uuid
+
+import pytest
 
 from tests.apps.base.utils.models_list import DEBASTIANI_BASE_MODELS
 
@@ -30,7 +31,7 @@ class TestBaseModelFields:
         """Test UUID field is set on creation"""
         instance = model.objects.create()
         assert instance.uuid is not None
-        assert isinstance(instance.uuid, uuid.UUID) 
+        assert isinstance(instance.uuid, uuid.UUID)
 
     @pytest.mark.parametrize("model", DEBASTIANI_BASE_MODELS)
     def test_is_deleted_is_set_on_creation(self, db, model):
@@ -44,7 +45,7 @@ class TestBaseModelFields:
         """Test created_at field is set on creation"""
         instance = model.objects.create()
         assert instance.created_at is not None
-        assert isinstance(instance.created_at, datetime.datetime) 
+        assert isinstance(instance.created_at, datetime.datetime)
 
     @pytest.mark.parametrize("model", DEBASTIANI_BASE_MODELS)
     def test_modified_at_is_set_on_creation(self, db, model):

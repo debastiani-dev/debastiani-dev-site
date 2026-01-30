@@ -1,6 +1,8 @@
-import pytest 
-from django.contrib.auth import get_user_model 
+import pytest
+from django.contrib.auth import get_user_model
+
 User = get_user_model()
+
 
 @pytest.mark.django_db
 class TestUserModelFields:
@@ -25,16 +27,15 @@ class TestUserModelFields:
 
     def test_full_name_property(self):
         """Test full_name property"""
-        user = User.objects.create(email="test@example.com", first_name="Test", last_name="User")
+        user = User.objects.create(
+            email="test@example.com", first_name="Test", last_name="User"
+        )
         assert user.fullname == "Test User"
 
     def test_is_staff_property(self):
         """Test is_staff property"""
         user = User.objects.create(
-            email="test@example.com",
-            first_name="Test", 
-            last_name="User",
-            is_admin=True
+            email="test@example.com", first_name="Test", last_name="User", is_admin=True
         )
         assert user.is_staff is True
         assert user.is_staff == user.is_admin
