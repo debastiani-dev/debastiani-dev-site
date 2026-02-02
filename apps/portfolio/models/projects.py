@@ -9,6 +9,7 @@ class ProjectCategory(BaseModel):
     class Meta:
         verbose_name = "Project Category"
         verbose_name_plural = "Project Categories"
+        app_label = "portfolio"
 
     def __str__(self):
         return self.name
@@ -20,6 +21,7 @@ class ProjectTechnology(BaseModel):
     class Meta:
         verbose_name = "Project Technology"
         verbose_name_plural = "Project Technologies"
+        app_label = "portfolio"
 
     def __str__(self):
         return self.name
@@ -44,3 +46,11 @@ class Project(BaseModel):
     ended_at = models.DateField(null=True, blank=True, verbose_name="End Date")
     live_url = models.URLField(null=True, blank=True, verbose_name="Live URL")
     repo_url = models.URLField(null=True, blank=True, verbose_name="Repository URL")
+
+    class Meta:
+        verbose_name = "Project"
+        verbose_name_plural = "Projects"
+        app_label = "portfolio"
+
+    def __str__(self):
+        return self.title
