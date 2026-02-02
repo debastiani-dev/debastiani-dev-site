@@ -1,7 +1,7 @@
 from django.apps import AppConfig
 
 
-class UsersConfig(AppConfig):
+class PortfolioConfig(AppConfig):
     default_auto_field = "django.db.models.BigAutoField"
-    name = "apps.users"
-    app_label = "users"
+    name = "apps.portfolio"
+    app_label = "portfolio"
