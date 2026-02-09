@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     "apps.base",
     "apps.users",
     "apps.portfolio",
+    "apps.pages",
 ]
 
 MIDDLEWARE = [

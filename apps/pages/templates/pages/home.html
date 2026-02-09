@@ -1,0 +1,77 @@
+{% extends "base.html" %}
+
+{% block title %}Home | debastiani.dev{% endblock %}
+
+{% block content %}
+<section class="text-center py-20 md:py-32 bg-white">
+    <div class="max-w-4xl mx-auto px-4">
+        <h1 class="text-5xl md:text-7xl font-bold text-gray-900 mb-6 tracking-tight">
+            Building <span class="text-accent">SaaS & IoT</span><br>
+            Solutions in Python.
+        </h1>
+        <p class="text-xl text-gray-600 mb-8 max-w-3xl mx-auto leading-relaxed">
+            Software Developer with over 8 years of experience with Python and Django. 
+            Focused on developing and maintaining scalable web systems, with expertise in 
+            backend development, RESTful APIs, and performance optimization.
+        </p>
+        <div class="flex justify-center gap-4">
+            <a href="{% url 'portfolio:list' %}" class="bg-primary text-white px-8 py-3 rounded-lg font-semibold hover:bg-gray-800 transition">
+                View My Work
+            </a>
+            <a href="https://github.com/rjdebastiani" target="_blank" class="border border-gray-300 text-gray-700 px-8 py-3 rounded-lg font-semibold hover:bg-gray-50 transition">
+                GitHub
+            </a>
+        </div>
+    </div>
+</section>
+
+<section class="py-12 bg-gray-50 border-y border-gray-200">
+    <div class="max-w-4xl mx-auto px-4 text-center">
+        <div class="grid md:grid-cols-2 gap-8 text-left">
+            <div class="bg-white p-6 rounded-lg shadow-sm">
+                <h3 class="font-bold text-gray-900 mb-2 text-lg">🔌 IoT & Real-Time</h3>
+                <p class="text-gray-600">Experienced in integrating IoT systems with web applications, implementing real-time bidirectional communication through messaging and event-driven protocols.</p>
+            </div>
+            <div class="bg-white p-6 rounded-lg shadow-sm">
+                <h3 class="font-bold text-gray-900 mb-2 text-lg">☁️ Cloud & Scalability</h3>
+                <p class="text-gray-600">Familiar with cloud services for deployment and scalability. Seeking to collaborate on challenging projects using modern efficient solutions.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="py-16">
+    <div class="flex justify-between items-end mb-12">
+        <div>
+            <h2 class="text-3xl font-bold text-gray-900">Featured Work</h2>
+            <p class="text-gray-500 mt-2">Selected projects from my portfolio.</p>
+        </div>
+        <a href="{% url 'portfolio:list' %}" class="text-accent font-medium hover:text-blue-700 hidden md:block">
+            View all projects →
+        </a>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        {% for project in featured_projects %}
+            <a href="{% url 'portfolio:detail' project.pk %}" class="group block bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden hover:shadow-lg transition duration-300">
+                <div class="h-48 bg-gray-100 relative overflow-hidden">
+                    {% if project.cover_image %}
+                        <img src="{{ project.cover_image.url }}" alt="{{ project.title }}" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                    {% else %}
+                        <div class="flex items-center justify-center h-full text-gray-400">No Image</div>
+                    {% endif %}
+                </div>
+                <div class="p-6">
+                    <span class="text-xs font-bold text-accent uppercase tracking-wider">{{ project.category.name }}</span>
+                    <h3 class="text-xl font-bold text-gray-900 mt-2 mb-2 group-hover:text-accent transition">{{ project.title }}</h3>
+                    <p class="text-gray-600 text-sm line-clamp-2">{{ project.short_description }}</p>
+                </div>
+            </a>
+        {% empty %}
+            <div class="col-span-3 text-center py-10 bg-gray-50 rounded-lg border border-dashed border-gray-300">
+                <p class="text-gray-500">No featured projects yet.</p>
+            </div>
+        {% endfor %}
+    </div>
+</section>
+{% endblock %}
