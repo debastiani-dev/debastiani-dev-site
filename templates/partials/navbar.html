@@ -7,7 +7,8 @@
 
             <div class="hidden md:flex space-x-6">
                 <a href="/" class="hover:text-accent transition">Home</a>
-                <a href="#" class="hover:text-accent transition">Portfolio</a> <a href="/admin/" class="text-gray-400 hover:text-white transition">Admin</a>
+                <a href="{% url 'portfolio:list' %}" class="hover:text-accent transition">Portfolio</a> 
+                <a href="/admin/" class="text-gray-400 hover:text-white transition">Admin</a>
             </div>
         </div>
     </div>

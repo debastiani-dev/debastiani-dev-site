@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+
+{% block title %}Portfolio | Debastiani.dev{% endblock %}
+
+{% block content %}
+<div class="mb-12 text-center">
+    <h1 class="text-4xl font-bold text-gray-900 mb-4">My Work</h1>
+    <p class="text-xl text-gray-600">A selection of projects I've engineered.</p>
+</div>
+
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+    {% for project in projects %}
+    <a href="{% url 'portfolio:detail' project.pk %}" class="group block bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition duration-300">
+        <div class="h-48 bg-gray-200 overflow-hidden relative">
+            {% if project.cover_image %}
+                <img src="{{ project.cover_image.url }}" alt="{{ project.title }}" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+            {% else %}
+                <div class="flex items-center justify-center h-full text-gray-400">No Image</div>
+            {% endif %}
+        </div>
+
+        <div class="p-6">
+            <div class="flex items-center justify-between mb-2">
+                <span class="text-xs font-semibold uppercase tracking-wider text-accent">
+                    {{ project.category.name }}
+                </span>
+                <span class="text-xs text-gray-500">{{ project.started_at|date:"Y" }}</span>
+            </div>
+            
+            <h3 class="text-xl font-bold text-gray-900 mb-2 group-hover:text-accent transition">{{ project.title }}</h3>
+            <p class="text-gray-600 text-sm line-clamp-3 mb-4">
+                {{ project.short_description }}
+            </p>
+
+            <div class="flex flex-wrap gap-2 mt-auto">
+                {% for tech in project.technologies.all|slice:":4" %}
+                    <span class="px-2 py-1 bg-gray-100 text-xs rounded text-gray-600">{{ tech.name }}</span>
+                {% endfor %}
+            </div>
+        </div>
+    </a>
+    {% empty %}
+        <p class="col-span-3 text-center text-gray-500 py-10">No projects found yet.</p>
+    {% endfor %}
+</div>
+{% endblock %}
