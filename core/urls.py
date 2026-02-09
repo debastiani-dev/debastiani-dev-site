@@ -25,7 +25,7 @@ from django.views.generic import TemplateView
 urlpatterns = [
     path("admin/", admin.site.urls),
     path("portfolio/", include("apps.portfolio.urls", namespace="portfolio")),
-    path('', TemplateView.as_view(template_name='home.html'), name='home'),
+    path("", include("apps.pages.urls", namespace="pages")), 
 ]
 
 if settings.DEBUG:
