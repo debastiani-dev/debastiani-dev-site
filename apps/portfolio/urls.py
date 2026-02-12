@@ -1,5 +1,6 @@
 from django.urls import path
-from apps.portfolio.views.projects import ProjectListView, ProjectDetailView
+
+from apps.portfolio.views.projects import ProjectDetailView, ProjectListView
 
 app_name = "portfolio"
 

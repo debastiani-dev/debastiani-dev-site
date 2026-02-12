@@ -14,7 +14,6 @@ from pathlib import Path
 
 from decouple import config
 
-
 AUTH_USER_MODEL = "users.User"
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -63,7 +62,7 @@ ROOT_URLCONF = "core.urls"
 TEMPLATES = [
     {
         "BACKEND": "django.template.backends.django.DjangoTemplates",
-        "DIRS": [BASE_DIR / 'templates'],
+        "DIRS": [BASE_DIR / "templates"],
         "APP_DIRS": True,
         "OPTIONS": {
             "context_processors": [
