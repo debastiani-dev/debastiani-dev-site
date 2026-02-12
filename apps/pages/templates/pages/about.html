@@ -1,0 +1,79 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}About Me | debastiani.dev{% endblock %}
+
+{% block content %}
+<div class="max-w-5xl mx-auto py-12 md:py-20">
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
+        
+        <div class="md:col-span-1 text-center md:text-left">
+            <div class="w-48 h-48 mx-auto md:mx-0 bg-gray-200 rounded-full overflow-hidden mb-6 border-4 border-white shadow-lg">
+                <img src="{% static 'img/profile.jpg' %}" alt="Rafael Debastiani" class="w-full h-full object-cover">
+            </div>
+            
+            <h1 class="text-2xl font-bold text-gray-900">Rafael Debastiani</h1>
+            <p class="text-accent font-medium mb-6">Senior Software Developer</p>
+            
+            <a href="{% static 'docs/resume.pdf' %}" target="_blank" class="inline-block w-full bg-gray-900 text-white text-center py-3 rounded-lg font-semibold hover:bg-gray-800 transition mb-4">
+                📄 Download Resume
+            </a>
+            
+            <div class="flex justify-center md:justify-start gap-4 text-gray-400">
+                </div>
+        </div>
+
+        <div class="md:col-span-2 space-y-12">
+            
+            <section>
+                <h2 class="text-2xl font-bold text-gray-900 mb-4 border-l-4 border-accent pl-4">Who I Am</h2>
+                <div class="prose text-gray-600">
+                    <p class="mb-4">
+                        I am a Brazilian Software Developer with over 15 years of experience in the tech industry, 
+                        specializing in <strong>Python, Django, and DRF</strong> for the past 8 years.
+                    </p>
+                    <p class="mb-4">
+                        My expertise lies in building scalable SaaS backends and integrating complex IoT systems 
+                        with real-time bidirectional communication. I have deeply worked with event-driven architectures 
+                        and high-performance APIs.
+                    </p>
+                    <p>
+                        Currently, I run <strong>debastiani.dev</strong>, and work with <a href="https://supplify.io">Supplify</a> helping global clients build robust 
+                        AI-driven e-procurement and supply chain solutions.
+                    </p>
+                </div>
+            </section>
+
+            <section>
+                <h2 class="text-2xl font-bold text-gray-900 mb-6 border-l-4 border-accent pl-4">Tech Stack</h2>
+                
+                <div class="mb-6">
+                    <h3 class="font-bold text-gray-800 mb-3">Backend</h3>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="px-3 py-1 bg-gray-100 text-gray-700 rounded-md text-sm">Python</span>
+                        <span class="px-3 py-1 bg-gray-100 text-gray-700 rounded-md text-sm">Django</span>
+                        <span class="px-3 py-1 bg-gray-100 text-gray-700 rounded-md text-sm">DRF</span>
+                        <span class="px-3 py-1 bg-gray-100 text-gray-700 rounded-md text-sm">FastAPI</span>
+                        <span class="px-3 py-1 bg-gray-100 text-gray-700 rounded-md text-sm">PostgreSQL</span>
+                        <span class="px-3 py-1 bg-gray-100 text-gray-700 rounded-md text-sm">Redis</span>
+                        <span class="px-3 py-1 bg-gray-100 text-gray-700 rounded-md text-sm">Celery</span>
+                        <span class="px-3 py-1 bg-gray-100 text-gray-700 rounded-md text-sm">Docker</span>
+                    </div>
+                </div>
+
+                <div>
+                    <h3 class="font-bold text-gray-800 mb-3">IoT & DevOps</h3>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="px-3 py-1 bg-gray-100 text-gray-700 rounded-md text-sm">MQTT</span>
+                        <span class="px-3 py-1 bg-gray-100 text-gray-700 rounded-md text-sm">RabbitMQ</span>
+                        <span class="px-3 py-1 bg-gray-100 text-gray-700 rounded-md text-sm">GCP</span>
+                        <span class="px-3 py-1 bg-gray-100 text-gray-700 rounded-md text-sm">CI/CD</span>
+                        <span class="px-3 py-1 bg-gray-100 text-gray-700 rounded-md text-sm">Linux</span>
+                    </div>
+                </div>
+            </section>
+
+        </div>
+    </div>
+</div>
+{% endblock %}
