@@ -14,7 +14,6 @@ from pathlib import Path
 
 from decouple import config
 
-import os
 
 AUTH_USER_MODEL = "users.User"
 
