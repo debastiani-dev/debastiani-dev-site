@@ -1,4 +1,8 @@
-from apps.portfolio.models.projects import Project, ProjectCategory, ProjectTechnology
+from apps.portfolio.models.projects import (
+    Project,
+    ProjectCategory,
+    ProjectTechnology,
+)
 from apps.users.models.users import User
 
 USERS_MODELS = [User]

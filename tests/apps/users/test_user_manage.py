@@ -22,11 +22,12 @@ class TestUserManager:
         assert user.is_admin is False
 
     def test_create_user_no_email(self):
-        with pytest.raises(
-            ValueError, match="Users must have an email address"
-        ) as excinfo:
+        with pytest.raises(ValueError, match="Users must have an email address"):
             User.objects.create_user(
-                email="", first_name="Test", last_name="User", password="testpassword"
+                email="",
+                first_name="Test",
+                last_name="User",
+                password="testpassword",
             )
 
     def test_create_superuser(self):

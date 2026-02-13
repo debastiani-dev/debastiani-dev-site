@@ -16,9 +16,10 @@ class TestProjectCategoryModelField:
 
         required_fields = {"name"}
 
-        assert required_fields.issubset(
-            field
-        ), f"ProjectCategory model missing required fields: {required_fields - field}"
+        assert required_fields.issubset(field), (
+            f"ProjectCategory model missing required fields: "
+            f"{required_fields - field}"
+        )
 
     def test_str_method(self):
         instance = baker.make(ProjectCategory, name="Test TestProjectCategory")

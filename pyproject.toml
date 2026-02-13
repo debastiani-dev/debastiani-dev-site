@@ -41,6 +41,18 @@ flake8 = "^7.3.0"
 mypy = "^1.19.1"
 pylint = "^4.0.4"
 model-bakery = "^1.23.2"
+django-stubs = "^5.2.9"
+pylint-django = "^2.7.0"
+
+[tool.mypy]
+plugins = ["mypy_django_plugin.main"]
+
+[[tool.mypy.overrides]]
+module = ["decouple.*", "phonenumber_field.*"]
+ignore_missing_imports = true
+
+[tool.django-stubs]
+django_settings_module = "core.settings"
 
 [build-system]
 requires = ["poetry-core"]

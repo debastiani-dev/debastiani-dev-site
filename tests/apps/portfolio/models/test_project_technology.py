@@ -11,7 +11,7 @@ class TestProjectTechnologyModelField:
     def test_project_category_fields(self):
         """Test ProjectCategory required fields."""
 
-        instance = baker.make(ProjectCategory)
+        baker.make(ProjectCategory)
 
         field = {f.name for f in ProjectTechnology._meta.fields}
 
@@ -19,9 +19,10 @@ class TestProjectTechnologyModelField:
             "name",
         }
 
-        assert required_fields.issubset(
-            field
-        ), f"ProjectTechnology model missing required fields: {required_fields - field}"
+        assert required_fields.issubset(field), (
+            f"ProjectTechnology model missing required fields: "
+            f"{required_fields - field}"
+        )
 
     def test_str_method(self):
         """Test __str__ method of ProjectTechnology model."""

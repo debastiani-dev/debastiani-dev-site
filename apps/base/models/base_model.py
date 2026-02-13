@@ -1,12 +1,12 @@
 import uuid
-from typing import Any, Optional, Union
+from typing import Any, Optional
 
 from django.db import models
 from django.utils.translation import gettext_lazy as _
 
 
 class BaseQuerySet(models.QuerySet):
-    def delete(self, destroy: bool = False) -> Union[int, tuple[int, dict[str, int]]]:
+    def delete(self, destroy: bool = False) -> tuple[int, dict[str, int]]:
         if not destroy:
             return (
                 self.update(is_deleted=True),

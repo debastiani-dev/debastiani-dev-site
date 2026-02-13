@@ -11,6 +11,7 @@ class TestBaseModelFields:
     """Test basic field functionality of BaseModel"""
 
     @pytest.mark.parametrize("model", DEBASTIANI_BASE_MODELS)
+    # pylint: disable=unused-argument
     def test_base_model_fields(self, db, model):
         """Test required base fields"""
         instance = model()
@@ -23,33 +24,42 @@ class TestBaseModelFields:
             "uuid",
         }
 
-        assert required_fields.issubset(
-            fields
-        ), f"Model {model.__name__} missing required base fields: {required_fields - fields}"
+        assert required_fields.issubset(fields), (
+            f"Model {model.__name__} missing required base fields: "
+            f"{required_fields - fields}"
+        )
 
     @pytest.mark.parametrize("model", DEBASTIANI_BASE_MODELS)
-    def test_uuid_is_set_on_creation(self, db, model):
+    def test_uuid_is_set_on_creation(
+        self, db, model
+    ):  # pylint: disable=unused-argument
         """Test UUID field is set on creation"""
         instance = baker.make(model)
         assert instance.uuid is not None
         assert isinstance(instance.uuid, uuid.UUID)
 
     @pytest.mark.parametrize("model", DEBASTIANI_BASE_MODELS)
-    def test_is_deleted_is_set_on_creation(self, db, model):
+    def test_is_deleted_is_set_on_creation(
+        self, db, model
+    ):  # pylint: disable=unused-argument
         """Test is_deleted field is set to False on creation"""
         instance = baker.make(model)
         assert instance.is_deleted is False
         assert isinstance(instance.is_deleted, bool)
 
     @pytest.mark.parametrize("model", DEBASTIANI_BASE_MODELS)
-    def test_created_at_is_set_on_creation(self, db, model):
+    def test_created_at_is_set_on_creation(
+        self, db, model
+    ):  # pylint: disable=unused-argument
         """Test created_at field is set on creation"""
         instance = baker.make(model)
         assert instance.created_at is not None
         assert isinstance(instance.created_at, datetime.datetime)
 
     @pytest.mark.parametrize("model", DEBASTIANI_BASE_MODELS)
-    def test_modified_at_is_set_on_creation(self, db, model):
+    def test_modified_at_is_set_on_creation(
+        self, db, model
+    ):  # pylint: disable=unused-argument
         """Test modified_at field is set on creation"""
         instance = baker.make(model)
         assert instance.modified_at is not None

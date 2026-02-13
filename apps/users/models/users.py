@@ -1,3 +1,5 @@
+from typing import cast
+
 from django.contrib.auth.models import (
     AbstractBaseUser,
     BaseUserManager,
@@ -23,9 +25,12 @@ class UserManager(BaseUserManager, BaseManager):
             last_name=last_name,
             **extra_fields,
         )
-        user.set_password(password)
+        if hasattr(user, "set_password"):
+            cast("User", user).set_password(password)
+        else:
+            raise TypeError("User model does not support password setting")
         user.save(using=self._db)
-        return user
+        return cast("User", user)
 
     def create_superuser(
         self, email: str, first_name: str, last_name: str, password: str, **extra_fields
@@ -54,7 +59,8 @@ class User(AbstractBaseUser, PermissionsMixin, BaseModel):
     is_admin = models.BooleanField(_("Admin"), default=False)
     photo = models.ImageField(_("Photo"), upload_to="avatars/", null=True, blank=True)
 
-    objects = UserManager()
+    # Type hinting for the manager to avoid mypy errors
+    objects: "UserManager" = UserManager()  # type: ignore
 
     USERNAME_FIELD = "email"
     REQUIRED_FIELDS = ["first_name", "last_name"]
