@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block title %}Server Error{% endblock %}
+
+{% block content %}
+<div class="min-h-[60vh] flex flex-col items-center justify-center text-center px-4">
+    <h1 class="text-9xl font-bold text-red-100">500</h1>
+    <h2 class="text-3xl font-bold text-gray-900 mt-4">Internal Server Error</h2>
+    <p class="text-gray-600 mt-2 max-w-md mx-auto">
+        Something went wrong on our end. We are tracking the error and will fix it soon.
+    </p>
+    <div class="mt-8">
+        <a href="{% url 'pages:home' %}" class="bg-primary text-white px-6 py-3 rounded-lg font-semibold hover:bg-gray-800 transition">
+            Go Back Home
+        </a>
+    </div>
+</div>
+{% endblock %}
