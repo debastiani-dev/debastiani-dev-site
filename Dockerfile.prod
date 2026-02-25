@@ -1,0 +1,39 @@
+# Use a specific, slim version of Python to keep image size down
+FROM python:3.13-slim-bookworm
+
+# Set work directory
+WORKDIR /app
+
+# Set environment variables
+# PYTHONDONTWRITEBYTECODE: Prevents Python from writing .pyc files to disc
+# PYTHONUNBUFFERED: Ensures logs are flushed immediately to the console
+ENV PYTHONDONTWRITEBYTECODE=1 \
+    PYTHONUNBUFFERED=1
+
+# Install system dependencies required for building Python packages (like psycopg2)
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    libpq-dev gcc && \
+    rm -rf /var/lib/apt/lists/*
+
+# Install Python dependencies via Poetry
+COPY pyproject.toml poetry.lock ./
+RUN pip install poetry && \
+    poetry config virtualenvs.create false && \
+    poetry install --without dev --no-interaction --no-ansi --no-root
+
+# Copy the rest of the application code
+COPY . .
+
+# Collect Static Files
+# This gathers all static files into the STATIC_ROOT directory so WhiteNoise can serve them.
+RUN python manage.py collectstatic --noinput
+
+# Running as root is a security risk in production.
+# Create a non-root user 'django', change ownership of the app folder, and switch to it
+RUN addgroup --system django && adduser --system --ingroup django django && \
+    chown -R django:django /app
+USER django
+
+# Start the application using Gunicorn
+# bind 0.0.0.0:8000: Listen on all interfaces on port 8000
+CMD ["gunicorn", "--bind", "0.0.0.0:8000", "core.wsgi:application"]
