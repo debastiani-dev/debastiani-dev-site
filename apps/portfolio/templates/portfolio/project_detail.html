@@ -1,6 +1,15 @@
 {% extends "base.html" %}
-
 {% block title %}{{ project.title }} | Debastiani.dev{% endblock %}
+{% block meta_description %}{{ project.short_description }}{% endblock %}
+
+{% block og_title %}{{ project.title }} | Project Showcase{% endblock %}
+{% block og_description %}{{ project.short_description }}{% endblock %}
+{% block og_image %}{{ project.cover_image.url }}{% endblock %}
+
+{% block twitter_title %}{{ project.title }}{% endblock %}
+{% block twitter_description %}{{ project.short_description }}{% endblock %}
+{% block twitter_image %}{{ project.cover_image.url }}{% endblock %}
+
 
 {% block content %}
 <div class="max-w-4xl mx-auto bg-white rounded-xl shadow-lg overflow-hidden">

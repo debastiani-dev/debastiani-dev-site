@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %}debastiani.dev{% endblock %}</title>
+    <link rel="shortcut icon" type="image/png" href="{% static 'img/favicon.png' %}"/>
 
     <script src="https://cdn.tailwindcss.com"> </script>
 
@@ -20,6 +21,19 @@
             }
         }
     </script>
+    <meta name="description" content="{% block meta_description %}Rafael Debastiani - Senior Software Developer (Python/Django){% endblock %}">
+
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="{{ request.build_absolute_uri }}">
+    <meta property="og:title" content="{% block og_title %}Rafael Debastiani | Python Developer{% endblock %}">
+    <meta property="og:description" content="{% block og_description %}Senior Software Developer specialized in Python, Django, SaaS solutions.{% endblock %}">
+    <meta property="og:image" content="{% block og_image %}{% static 'img/social_preview.jpg' %}{% endblock %}">
+
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="{{ request.build_absolute_uri }}">
+    <meta property="twitter:title" content="{% block twitter_title %}Rafael Debastiani | Python Developer{% endblock %}">
+    <meta property="twitter:description" content="{% block twitter_description %}Senior Software Developer specialized in Python, Django, SaaS solutions.{% endblock %}">
+    <meta property="twitter:image" content="{% block twitter_image %}{% static 'img/social_preview.jpg' %}{% endblock %}">
 
     <link rel="stylesheet" href="{% static 'css/styles.css' %}">
 

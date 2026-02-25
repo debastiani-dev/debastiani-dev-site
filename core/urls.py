@@ -19,11 +19,31 @@ from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib import admin
 from django.urls import URLPattern, URLResolver, include, path
+from django.contrib.sitemaps.views import sitemap
+from sitemaps import StaticViewSitemap, ProjectSitemap
+from django.views.generic.base import TemplateView
+
+sitemaps = {
+    "static": StaticViewSitemap,
+    "projects": ProjectSitemap,
+}
 
 urlpatterns: list[URLResolver | URLPattern] = [
     path("admin/", admin.site.urls),
     path("portfolio/", include("apps.portfolio.urls", namespace="portfolio")),
     path("", include("apps.pages.urls", namespace="pages")),
+    path(
+        "sitemap.xml",
+        sitemap,
+        {"sitemaps": sitemaps},
+        name="django.contrib.sitemaps.views.sitemap",
+    ),
+]
+urlpatterns += [
+    path(
+        "robots.txt",
+        TemplateView.as_view(template_name="robots.txt", content_type="text/plain"),
+    ),
 ]
 
 if settings.DEBUG:
