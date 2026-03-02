@@ -28,7 +28,45 @@ SECRET_KEY = config("SECRET_KEY")
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = config("DEBUG", default=False, cast=bool)
 
-ALLOWED_HOSTS = config("ALLOWED_HOSTS", default="", cast=lambda v: [s.strip() for s in v.split(",") if s.strip()])
+ALLOWED_HOSTS = config(
+    "ALLOWED_HOSTS",
+    default="",
+    cast=lambda v: [s.strip() for s in v.split(",") if s.strip()],
+)
+
+# TRUSTED ORIGINS (Crucial for Admin Login behind Nginx/HTTPS)
+# Django 4.0+ requires the scheme (https://) to be included.
+# Example env: CSRF_TRUSTED_ORIGINS=https://debastiani.dev,https://www.debastiani.dev
+CSRF_TRUSTED_ORIGINS = config("CSRF_TRUSTED_ORIGINS", default="http://localhost").split(
+    ","
+)
+
+# PRODUCTION SECURITY HARDENING
+if not DEBUG:
+    # 1. Proxy Handling (The most critical setting for Docker/Nginx)
+    # This tells Django: "If the header X-Forwarded-Proto says 'https', treat the request as secure."
+    # Without this, you will get infinite redirect loops or CSRF verification failures.
+    SECURE_PROXY_SSL_HEADER = ("HTTP_X_FORWARDED_PROTO", "https")
+
+    # 2. Force HTTPS
+    # Redirect all non-HTTPS requests to HTTPS.
+    # (Safe to use only because we set SECURE_PROXY_SSL_HEADER above).
+    # WARNING: This will break local testing of DEBUG=False over plain HTTP.
+    SECURE_SSL_REDIRECT = True
+
+    # 3. Secure Cookies
+    # Ensure session and CSRF cookies are ONLY sent over HTTPS connections.
+    # This prevents session hijacking via unencrypted HTTP.
+    SESSION_COOKIE_SECURE = True
+    CSRF_COOKIE_SECURE = True
+
+    # 4. HTTP Strict Transport Security (HSTS)
+    # Tells browsers to ONLY connect via HTTPS for a specific duration.
+    # We start with a low value (1 hour = 3600s) for testing.
+    # Once stable, we will increase to 31536000 (1 year).
+    SECURE_HSTS_SECONDS = 3600
+    SECURE_HSTS_INCLUDE_SUBDOMAINS = True
+    SECURE_HSTS_PRELOAD = False  # Keep False until we are 100% sure SSL is stable
 
 
 # Application definition

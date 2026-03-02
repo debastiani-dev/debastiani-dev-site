@@ -1,7 +1,9 @@
 import pytest
 from django.urls import reverse
-from apps.pages.views.home import Project
 from model_bakery import baker
+
+from apps.pages.views.home import Project
+
 
 @pytest.mark.django_db
 class TestHomeView:
@@ -9,9 +11,11 @@ class TestHomeView:
 
     def test_home_view_context(self, client):
         """Test that HomeView provides featured projects in context."""
-        
+
         baker.make(Project, is_featured=True, _quantity=3)  # Create 3 featured projects
-        baker.make(Project, is_featured=False, _quantity=2)  # Create 2 non-featured projects
+        baker.make(
+            Project, is_featured=False, _quantity=2
+        )  # Create 2 non-featured projects
 
         assert Project.objects.all().count() == 5  # Ensure all projects are created
 
