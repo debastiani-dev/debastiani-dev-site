@@ -5,11 +5,26 @@ services:
       dockerfile: Dockerfile.prod
     command: gunicorn core.wsgi:application --bind 0.0.0.0:8000
     expose:
-      - "8000"
+      - 8000
     env_file:
       - .env
     depends_on:
       - db
+    volumes:
+      # Map the internal media folder to a persistent volume
+      - media_volume:/app/media
+    restart: always
+
+  nginx:
+    build: ./nginx
+    ports:
+      - "80:80"
+      # - "443:443" (Leave commented until SSL is ready)
+    volumes:
+      # Nginx needs to READ the same folder Gunicorn WRITES to
+      - media_volume:/app/media
+    depends_on:
+      - web
     restart: always
 
   db:
@@ -19,10 +34,11 @@ services:
     env_file:
       - .env
     environment:
-      - POSTGRES_PASSWORD=${DB_PASSWORD}
-      - POSTGRES_USER=${DB_USER}
       - POSTGRES_DB=${DB_NAME}
+      - POSTGRES_USER=${DB_USER}
+      - POSTGRES_PASSWORD=${DB_PASSWORD}
     restart: always
 
 volumes:
   postgres_data_prod:
+  media_volume: # Persistent storage for uploads
