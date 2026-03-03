@@ -12,9 +12,11 @@ class TestProjectViews:
     def test_project_list_view(self, client):
         """Test that ProjectListView returns active projects in context."""
 
-        baker.make(Project, is_featured=True, _quantity=4, cover_image='dummy.jpg')  # Create 4 active projects
         baker.make(
-            Project, is_featured=False, _quantity=2, cover_image='dummy.jpg'
+            Project, is_featured=True, _quantity=4, cover_image="dummy.jpg"
+        )  # Create 4 active projects
+        baker.make(
+            Project, is_featured=False, _quantity=2, cover_image="dummy.jpg"
         )  # Create 2 inactive projects
 
         assert Project.objects.all().count() == 6  # Ensure all projects are created
@@ -29,7 +31,7 @@ class TestProjectViews:
         """Test that ProjectDetailView returns the correct project."""
 
         project = baker.make(
-            Project, is_featured=True, cover_image='dummy.jpg'
+            Project, is_featured=True, cover_image="dummy.jpg"
         )  # Create a single featured project
 
         response = client.get(reverse("portfolio:detail", kwargs={"pk": project.pk}))
