@@ -36,7 +36,7 @@ jobs:
           python -m pip install --upgrade pip
           pip install poetry black
           poetry config virtualenvs.create false
-          poetry install --with dev
+          poetry install --with dev --no-root
           
       - name: Check Code Formatting
         run: black --check .
