@@ -1,15 +1,15 @@
 {% extends "base.html" %}
-{% block title %}Page Not Found{% endblock %}
+{% block title %}Page Not Found | debastiani.dev{% endblock %}
 
 {% block content %}
-<div class="min-h-[60vh] flex flex-col items-center justify-center text-center px-4">
-    <h1 class="text-9xl font-bold text-gray-200">404</h1>
-    <h2 class="text-3xl font-bold text-gray-900 mt-4">Page Not Found</h2>
-    <p class="text-gray-600 mt-2 max-w-md mx-auto">
+<div class="min-h-[65vh] flex flex-col items-center justify-center text-center px-4">
+    <h1 class="text-9xl font-extrabold text-transparent bg-clip-text bg-gradient-to-b from-primary/80 to-accent/40 tracking-tighter">404</h1>
+    <h2 class="text-3xl font-bold text-white mt-4 tracking-tight">Page Not Found</h2>
+    <p class="text-slate-400 mt-3 max-w-md mx-auto leading-relaxed">
         Sorry, we couldn't find the page you're looking for. It might have been moved or deleted.
     </p>
     <div class="mt-8">
-        <a href="{% url 'pages:home' %}" class="bg-primary text-white px-6 py-3 rounded-lg font-semibold hover:bg-gray-800 transition">
+        <a href="{% url 'pages:home' %}" class="btn-tech btn-tech-active px-8 py-3 rounded-xl font-semibold tracking-wide transition inline-block">
             Go Back Home
         </a>
     </div>

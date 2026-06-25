@@ -1,0 +1,140 @@
+/* Modern Tech/Django Inspired Dark Theme */
+:root {
+    --bg-dark: #09090b; /* Zinc 950 */
+    --bg-panel: #18181b; /* Zinc 900 */
+    --bg-panel-darker: #0f0f11;
+    --border-subtle: #27272a; /* Zinc 800 */
+    --border-active: #3f3f46; /* Zinc 700 */
+    --color-django: #10b981; /* Emerald/Django Green */
+    --color-indigo: #6366f1; /* Indigo */
+    --text-primary: #f4f4f5;
+    --text-secondary: #a1a1aa;
+}
+
+body {
+    background-color: var(--bg-dark);
+    color: var(--text-primary);
+    font-family: 'Plus Jakarta Sans', 'Inter', sans-serif;
+    min-height: 100vh;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+::-webkit-scrollbar-track {
+    background: var(--bg-dark);
+}
+::-webkit-scrollbar-thumb {
+    background: #27272a;
+    border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: var(--color-django);
+}
+
+/* Structural Tech Cards */
+.tech-card {
+    background: var(--bg-panel);
+    border: 1px solid var(--border-subtle);
+    border-radius: 0.5rem;
+    transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.tech-card:hover {
+    border-color: var(--border-active);
+    transform: translateY(-2px);
+    box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.7);
+}
+
+/* Terminal Mockup */
+.dev-terminal {
+    background: var(--bg-panel);
+    border: 1px solid var(--border-subtle);
+    border-radius: 0.5rem;
+    overflow: hidden;
+}
+.dev-terminal-header {
+    background: var(--bg-panel-darker);
+    border-bottom: 1px solid var(--border-subtle);
+    padding: 0.75rem 1.25rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.dev-terminal-dots {
+    display: flex;
+    gap: 0.375rem;
+}
+.dev-terminal-dot {
+    width: 0.75rem;
+    height: 0.75rem;
+    border-radius: 9999px;
+}
+.dev-terminal-dot.close { background: #ef4444; }
+.dev-terminal-dot.minimize { background: #f59e0b; }
+.dev-terminal-dot.maximize { background: #10b981; }
+
+/* Pulse Indicator dot (active backend nodes) */
+.pulse-dot {
+    width: 8px;
+    height: 8px;
+    background-color: var(--color-django);
+    border-radius: 50%;
+    box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.5);
+    animation: pulse 2s infinite;
+}
+@keyframes pulse {
+    0% {
+        transform: scale(0.95);
+        box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.5);
+    }
+    70% {
+        transform: scale(1);
+        box-shadow: 0 0 0 8px rgba(16, 185, 129, 0);
+    }
+    100% {
+        transform: scale(0.95);
+        box-shadow: 0 0 0 0 rgba(16, 185, 129, 0);
+    }
+}
+
+/* Buttons */
+.btn-tech-primary {
+    background-color: var(--color-django);
+    color: #09090b;
+    border: 1px solid var(--color-django);
+    transition: all 0.2s ease;
+}
+.btn-tech-primary:hover {
+    background-color: #059669;
+    border-color: #059669;
+    transform: translateY(-1px);
+}
+
+.btn-tech-secondary {
+    background-color: transparent;
+    color: var(--text-primary);
+    border: 1px solid var(--border-subtle);
+    transition: all 0.2s ease;
+}
+.btn-tech-secondary:hover {
+    background-color: var(--bg-panel);
+    border-color: var(--border-active);
+}
+
+/* Badges */
+.badge-tech {
+    background-color: rgba(16, 185, 129, 0.05);
+    border: 1px solid rgba(16, 185, 129, 0.15);
+    color: #34d399;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.7rem;
+}
+.badge-tech:hover {
+    background-color: rgba(16, 185, 129, 0.1);
+    border-color: var(--color-django);
+}
+
+
+

@@ -1,25 +1,25 @@
-<nav class="bg-white border-b border-gray-100 fixed w-full top-0 z-50">
+<nav class="bg-[#09090b]/90 backdrop-blur border-b border-zinc-800 fixed w-full top-0 z-50">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex justify-between h-16">
             
             <div class="flex">
                 <div class="shrink-0 flex items-center">
-                    <a href="{% url 'pages:home' %}" class="font-bold text-xl text-gray-900 tracking-tight">
-                        debastiani<span class="text-accent">.dev</span>
+                    <a href="{% url 'pages:home' %}" class="font-bold text-lg tracking-tight text-white hover:text-primary transition-colors duration-300">
+                        debastiani<span class="text-primary">.dev</span>
                     </a>
                 </div>
             </div>
 
-            <div class="hidden sm:ml-6 sm:flex sm:items-center sm:space-x-8">
-                <a href="{% url 'pages:home' %}" class="text-gray-500 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium transition">Home</a>
-                <a href="{% url 'portfolio:list' %}" class="text-gray-500 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium transition">Portfolio</a>
-                <a href="{% url 'pages:about' %}" class="text-gray-500 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium transition">About</a>
-                </div>
+            <div class="hidden sm:ml-6 sm:flex sm:items-stretch sm:space-x-8">
+                <a href="{% url 'pages:home' %}" class="inline-flex items-center px-1 pt-1 border-b-2 {% if request.resolver_match.view_name == 'pages:home' %}border-primary text-white{% else %}border-transparent text-zinc-400 hover:text-white hover:border-zinc-700{% endif %} text-sm font-semibold tracking-wide transition duration-200">Home</a>
+                <a href="{% url 'portfolio:list' %}" class="inline-flex items-center px-1 pt-1 border-b-2 {% if request.resolver_match.namespace == 'portfolio' %}border-primary text-white{% else %}border-transparent text-zinc-400 hover:text-white hover:border-zinc-700{% endif %} text-sm font-semibold tracking-wide transition duration-200">Portfolio</a>
+                <a href="{% url 'pages:about' %}" class="inline-flex items-center px-1 pt-1 border-b-2 {% if request.resolver_match.view_name == 'pages:about' %}border-primary text-white{% else %}border-transparent text-zinc-400 hover:text-white hover:border-zinc-700{% endif %} text-sm font-semibold tracking-wide transition duration-200">About</a>
+            </div>
 
             <div class="-mr-2 flex items-center sm:hidden">
-                <button type="button" onclick="document.getElementById('mobile-menu').classList.toggle('hidden')" class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-accent" aria-controls="mobile-menu" aria-expanded="false">
+                <button type="button" onclick="document.getElementById('mobile-menu').classList.toggle('hidden')" class="inline-flex items-center justify-center p-2 rounded-md text-zinc-400 hover:text-white hover:bg-zinc-800/50 focus:outline-none focus:ring-1 focus:ring-primary" aria-controls="mobile-menu" aria-expanded="false">
                     <span class="sr-only">Open main menu</span>
-                    <svg class="block h-6 w-6" xmlns="[http://www.w3.org/2000/svg](http://www.w3.org/2000/svg)" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                    <svg class="block h-5 w-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
                     </svg>
                 </button>
@@ -27,11 +27,11 @@
         </div>
     </div>
 
-    <div class="hidden sm:hidden bg-white border-t border-gray-100" id="mobile-menu">
+    <div class="hidden sm:hidden bg-[#09090b] border-t border-zinc-800" id="mobile-menu">
         <div class="pt-2 pb-3 space-y-1">
-            <a href="{% url 'pages:home' %}" class="block pl-3 pr-4 py-2 border-l-4 border-transparent text-base font-medium text-gray-500 hover:bg-gray-50 hover:border-accent hover:text-gray-900">Home</a>
-            <a href="{% url 'portfolio:list' %}" class="block pl-3 pr-4 py-2 border-l-4 border-transparent text-base font-medium text-gray-500 hover:bg-gray-50 hover:border-accent hover:text-gray-900">Portfolio</a>
-            <a href="{% url 'pages:about' %}" class="block pl-3 pr-4 py-2 border-l-4 border-transparent text-base font-medium text-gray-500 hover:bg-gray-50 hover:border-accent hover:text-gray-900">About</a>
+            <a href="{% url 'pages:home' %}" class="block pl-3 pr-4 py-2 border-l-4 {% if request.resolver_match.view_name == 'pages:home' %}border-primary text-white bg-zinc-900{% else %}border-transparent text-zinc-400 hover:bg-zinc-900 hover:text-white{% endif %} text-base font-semibold transition duration-200">Home</a>
+            <a href="{% url 'portfolio:list' %}" class="block pl-3 pr-4 py-2 border-l-4 {% if request.resolver_match.namespace == 'portfolio' %}border-primary text-white bg-zinc-900{% else %}border-transparent text-zinc-400 hover:bg-zinc-900 hover:text-white{% endif %} text-base font-semibold transition duration-200">Portfolio</a>
+            <a href="{% url 'pages:about' %}" class="block pl-3 pr-4 py-2 border-l-4 {% if request.resolver_match.view_name == 'pages:about' %}border-primary text-white bg-zinc-900{% else %}border-transparent text-zinc-400 hover:bg-zinc-900 hover:text-white{% endif %} text-base font-semibold transition duration-200">About</a>
         </div>
     </div>
 </nav>

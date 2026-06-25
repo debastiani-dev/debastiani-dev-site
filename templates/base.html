@@ -6,16 +6,26 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %}debastiani.dev{% endblock %}</title>
     <link rel="shortcut icon" type="image/png" href="{% static 'img/favicon.png' %}"/>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'css/theme.css' %}">
 
-    <script src="https://cdn.tailwindcss.com"> </script>
+    <script src="https://cdn.tailwindcss.com"></script>
 
     <script>
         tailwind.config = {
             theme: {
                 extend: {
                     colors: {
-                        primary: '#0f172a',  /* Example Dark Blue */
-                        accent: '#3b82f6',   /* Example Blue */
+                        primary: '#10b981',  /* Django Emerald Green */
+                        accent: '#6366f1',   /* Indigo */
+                        darkbg: '#09090b',   /* Zinc 950 */
+                        panelbg: '#18181b',  /* Zinc 900 */
+                    },
+                    fontFamily: {
+                        sans: ['Plus Jakarta Sans', 'Inter', 'sans-serif'],
+                        mono: ['JetBrains Mono', 'monospace'],
                     }
                 }
             }
@@ -37,15 +47,15 @@
 
     {% block extra_head %}{% endblock %}
 </head>
-<body class="bg-gray-50 text-gray-900 flex flex-col min-h-screen">
+<body class="bg-[#09090b] text-[#f4f4f5] flex flex-col min-h-screen relative font-sans antialiased">
 
     {% include 'partials/navbar.html' %}
 
-    <main class="flex-grow container mx-auto px-4 py-8">
+    <main class="flex-grow container mx-auto px-4 py-8 relative z-10">
         {% if messages %}
             <div class="mb-6 space-y-2">
                 {% for message in messages %}
-                    <div class="p-4 rounded-md {% if message.tags == 'error' %}bg-red-100 text-red-700{% else %}bg-green-100 text-green-700{% endif %}">
+                    <div class="p-4 rounded-md {% if message.tags == 'error' %}bg-red-955/40 text-red-400 border border-red-900/50{% else %}bg-emerald-950/40 text-emerald-400 border border-emerald-900/50{% endif %} font-sans">
                         {{ message }}
                     </div>
                 {% endfor %}
