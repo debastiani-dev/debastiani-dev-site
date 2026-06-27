@@ -32,7 +32,7 @@
     <div class="max-w-5xl mx-auto px-4">
         <div class="grid md:grid-cols-2 gap-8">
             <!-- Block 1: Core Backend & SaaS Architecture -->
-            <div class="dev-terminal">
+            <div class="dev-terminal tilt-effect">
                 <div class="dev-terminal-header">
                     <div class="dev-terminal-dots">
                         <span class="dev-terminal-dot close"></span>
@@ -50,7 +50,7 @@
             </div>
 
             <!-- Block 2: APIs & System Integration -->
-            <div class="dev-terminal">
+            <div class="dev-terminal tilt-effect">
                 <div class="dev-terminal-header">
                     <div class="dev-terminal-dots">
                         <span class="dev-terminal-dot close"></span>
@@ -84,8 +84,8 @@
 
     <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
         {% for project in featured_projects %}
-            <div class="tech-card overflow-hidden flex flex-col h-full">
-                <a href="{% url 'portfolio:detail' project.pk %}" class="block h-48 bg-zinc-950 relative overflow-hidden border-b border-zinc-800">
+            <div class="tech-card tilt-effect overflow-hidden flex flex-col h-full">
+                <a href="{% url 'portfolio:detail' project.pk %}" class="block h-48 bg-zinc-900/50 backdrop-blur-sm relative overflow-hidden border-b border-zinc-800">
                     {% if project.cover_image %}
                         <img src="{{ project.cover_image.url }}" alt="{{ project.title }}" class="w-full h-full object-cover filter brightness-90 hover:brightness-100 transition duration-300">
                     {% else %}
@@ -107,7 +107,7 @@
                 </div>
             </div>
         {% empty %}
-            <div class="col-span-3 text-center py-12 bg-zinc-900/10 rounded-lg border border-dashed border-zinc-800">
+            <div class="col-span-3 text-center py-12 bg-zinc-900/10 backdrop-blur-sm rounded-lg border border-dashed border-zinc-800">
                 <p class="text-zinc-500 text-sm font-mono">No featured projects found.</p>
             </div>
         {% endfor %}

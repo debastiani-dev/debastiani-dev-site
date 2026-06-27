@@ -1,10 +1,10 @@
 /* Modern Tech/Django Inspired Dark Theme */
 :root {
     --bg-dark: #09090b; /* Zinc 950 */
-    --bg-panel: #18181b; /* Zinc 900 */
-    --bg-panel-darker: #0f0f11;
-    --border-subtle: #27272a; /* Zinc 800 */
-    --border-active: #3f3f46; /* Zinc 700 */
+    --bg-panel: rgba(24, 24, 27, 0.65); /* Zinc 900 with transparency for glass */
+    --bg-panel-darker: rgba(15, 15, 17, 0.65);
+    --border-subtle: rgba(255, 255, 255, 0.08); /* Subtle glass edge */
+    --border-active: rgba(255, 255, 255, 0.15); /* More prominent on hover */
     --color-django: #10b981; /* Emerald/Django Green */
     --color-indigo: #6366f1; /* Indigo */
     --text-primary: #f4f4f5;
@@ -37,19 +37,22 @@ body {
 /* Structural Tech Cards */
 .tech-card {
     background: var(--bg-panel);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
     border: 1px solid var(--border-subtle);
     border-radius: 0.5rem;
-    transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+    transition: background-color 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
 }
 .tech-card:hover {
     border-color: var(--border-active);
-    transform: translateY(-2px);
     box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.7);
 }
 
 /* Terminal Mockup */
 .dev-terminal {
     background: var(--bg-panel);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
     border: 1px solid var(--border-subtle);
     border-radius: 0.5rem;
     overflow: hidden;

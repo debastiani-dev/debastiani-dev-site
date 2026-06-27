@@ -69,5 +69,17 @@
     {% include 'partials/footer.html' %}
 
     {% block extra_js %}{% endblock %}
+    <script src="https://cdn.jsdelivr.net/npm/vanilla-tilt@1.8.1/dist/vanilla-tilt.min.js"></script>
+    <script>
+        // Initialize vanilla-tilt manually for specifically marked interactive cards
+        VanillaTilt.init(document.querySelectorAll(".tilt-effect"), {
+            max: 5,
+            speed: 400,
+            glare: true,
+            "max-glare": 0.05,
+            scale: 1.01,
+            reverse: true
+        });
+    </script>
 </body>
 </html>

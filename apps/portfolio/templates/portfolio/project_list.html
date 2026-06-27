@@ -10,8 +10,8 @@
 
 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
     {% for project in projects %}
-    <div class="tech-card overflow-hidden flex flex-col h-full">
-        <a href="{% url 'portfolio:detail' project.pk %}" class="block h-48 bg-zinc-950 relative overflow-hidden border-b border-zinc-800">
+    <div class="tech-card tilt-effect overflow-hidden flex flex-col h-full">
+        <a href="{% url 'portfolio:detail' project.pk %}" class="block h-48 bg-zinc-900/50 backdrop-blur-sm relative overflow-hidden border-b border-zinc-800">
             {% if project.cover_image %}
                 <img src="{{ project.cover_image.url }}" alt="{{ project.title }}" class="w-full h-full object-cover filter brightness-90 hover:brightness-100 transition duration-300">
             {% else %}
@@ -42,7 +42,7 @@
         </div>
     </div>
     {% empty %}
-        <div class="col-span-3 text-center py-16 bg-zinc-900/10 border border-dashed border-zinc-800 rounded-lg">
+        <div class="col-span-3 text-center py-16 bg-zinc-900/10 backdrop-blur-sm border border-dashed border-zinc-800 rounded-lg">
             <p class="text-zinc-500 text-sm font-mono">No projects found.</p>
         </div>
     {% endfor %}
