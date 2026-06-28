@@ -9,7 +9,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="{% static 'css/theme.css' %}">
+    <link rel="stylesheet" href="{% static 'css/theme.css' %}?v=24">
 
     <script src="https://cdn.tailwindcss.com"></script>
 
@@ -48,6 +48,9 @@
     {% block extra_head %}{% endblock %}
 </head>
 <body class="bg-[#09090b] text-[#f4f4f5] flex flex-col min-h-screen relative font-sans antialiased">
+    
+    <!-- Spatial Anchor Light -->
+    <div class="fixed top-0 left-1/2 -translate-x-1/2 w-full max-w-[1200px] h-[800px] bg-emerald-900/10 blur-[150px] rounded-[100%] pointer-events-none z-[-1]"></div>
 
     {% include 'partials/navbar.html' %}
 

@@ -4,7 +4,7 @@
 
 {% block content %}
 <!-- Hero Section -->
-<section class="text-center py-20 md:py-32 bg-transparent overflow-hidden">
+<section class="text-center py-20 md:py-32 relative z-10">
     <div class="max-w-4xl mx-auto px-4">
         <h1 class="text-5xl md:text-7xl font-extrabold tracking-tight text-white mb-6 leading-tight">
             Building the Core Logic <br>
@@ -13,26 +13,52 @@
         <p class="text-base md:text-lg text-zinc-400 mb-10 max-w-2xl mx-auto leading-relaxed">
             Senior Backend Engineer specializing in Python, Django, and DRF. I engineer high-availability architectures, robust business logic, and clean system integrations for complex web applications.
         </p>
-        <div class="flex flex-col sm:flex-row justify-center items-center gap-4">
-            <a href="{% url 'portfolio:list' %}" class="w-full sm:w-auto text-center btn-tech-primary px-8 py-3 rounded-lg font-semibold text-sm transition">
+        <div class="flex flex-col items-center gap-6 mt-4">
+            <a href="{% url 'portfolio:list' %}" class="w-full sm:w-auto text-center btn-tech-primary px-10 py-4 rounded-xl font-bold text-base transition shadow-[0_0_20px_rgba(16,185,129,0.15)] hover:shadow-[0_0_30px_rgba(16,185,129,0.3)]">
                 View My Portfolio
             </a>
-            <a href="https://github.com/rjdebastiani" target="_blank" class="w-full sm:w-auto text-center btn-tech-secondary px-8 py-3 rounded-lg font-semibold text-sm transition">
-                Personal GitHub
-            </a>
-            <a href="https://github.com/debastiani-dev" target="_blank" class="w-full sm:w-auto text-center btn-tech-secondary px-8 py-3 rounded-lg font-semibold text-sm transition">
-                Company GitHub
-            </a>
+            <div class="flex items-center gap-4 text-sm font-mono text-zinc-500 mt-2">
+                <span>Also on GitHub:</span>
+                <a href="https://github.com/rjdebastiani" target="_blank" class="hover:text-white transition-colors">Personal &nearr;</a>
+                <span class="opacity-50">|</span>
+                <a href="https://github.com/debastiani-dev" target="_blank" class="hover:text-white transition-colors">Company &nearr;</a>
+            </div>
         </div>
     </div>
 </section>
 
+<!-- Fading Divider -->
+<div class="h-[2px] w-full max-w-5xl mx-auto bg-gradient-to-r from-transparent via-white/10 to-transparent my-8"></div>
+
+<!-- Core Tech Stack Section -->
+<section class="py-16 relative z-10">
+    <div class="max-w-5xl mx-auto px-4">
+        <p class="text-center text-xs font-mono text-zinc-500 uppercase tracking-widest mb-6">Core Technology Stack</p>
+        <div class="flex flex-wrap justify-center gap-4 opacity-80">
+            <span class="px-5 py-2.5 rounded-lg bg-[#09090b] border border-zinc-800/60 text-sm font-mono text-zinc-400 hover:text-white transition-all duration-300 cursor-default hover:border-yellow-400/50 hover:shadow-[0_0_15px_rgba(250,204,21,0.15)]">Python</span>
+            <span class="px-5 py-2.5 rounded-lg bg-[#09090b] border border-zinc-800/60 text-sm font-mono text-zinc-400 hover:text-white transition-all duration-300 cursor-default hover:border-emerald-500/50 hover:shadow-[0_0_15px_rgba(16,185,129,0.15)]">Django</span>
+            <span class="px-5 py-2.5 rounded-lg bg-[#09090b] border border-zinc-800/60 text-sm font-mono text-zinc-400 hover:text-white transition-all duration-300 cursor-default hover:border-red-500/50 hover:shadow-[0_0_15px_rgba(239,68,68,0.15)]">Django Rest Framework</span>
+            <span class="px-5 py-2.5 rounded-lg bg-[#09090b] border border-zinc-800/60 text-sm font-mono text-zinc-400 hover:text-white transition-all duration-300 cursor-default hover:border-lime-400/50 hover:shadow-[0_0_15px_rgba(163,230,83,0.15)]">Celery</span>
+            <span class="px-5 py-2.5 rounded-lg bg-[#09090b] border border-zinc-800/60 text-sm font-mono text-zinc-400 hover:text-white transition-all duration-300 cursor-default hover:border-blue-500/50 hover:shadow-[0_0_15px_rgba(59,130,246,0.15)]">PostgreSQL</span>
+            <span class="px-5 py-2.5 rounded-lg bg-[#09090b] border border-zinc-800/60 text-sm font-mono text-zinc-400 hover:text-white transition-all duration-300 cursor-default hover:border-red-600/50 hover:shadow-[0_0_15px_rgba(220,38,38,0.15)]">Redis</span>
+            <span class="px-5 py-2.5 rounded-lg bg-[#09090b] border border-zinc-800/60 text-sm font-mono text-zinc-400 hover:text-white transition-all duration-300 cursor-default hover:border-orange-500/50 hover:shadow-[0_0_15px_rgba(249,115,22,0.15)]">RabbitMQ</span>
+            <span class="px-5 py-2.5 rounded-lg bg-[#09090b] border border-zinc-800/60 text-sm font-mono text-zinc-400 hover:text-white transition-all duration-300 cursor-default hover:border-purple-500/50 hover:shadow-[0_0_15px_rgba(168,85,247,0.15)]">Microservices</span>
+            <span class="px-5 py-2.5 rounded-lg bg-[#09090b] border border-zinc-800/60 text-sm font-mono text-zinc-400 hover:text-white transition-all duration-300 cursor-default hover:border-sky-400/50 hover:shadow-[0_0_15px_rgba(56,189,248,0.15)]">Docker</span>
+            <span class="px-5 py-2.5 rounded-lg bg-[#09090b] border border-zinc-800/60 text-sm font-mono text-zinc-400 hover:text-white transition-all duration-300 cursor-default hover:border-blue-400/50 hover:shadow-[0_0_15px_rgba(96,165,250,0.15)]">Google Cloud</span>
+        </div>
+    </div>
+</section>
+
+<!-- Fading Divider -->
+<div class="h-[2px] w-full max-w-5xl mx-auto bg-gradient-to-r from-transparent via-white/10 to-transparent my-8"></div>
+
 <!-- Core Competencies Section -->
-<section class="py-16 border-t border-zinc-800 bg-zinc-950/20">
+<section class="py-20 relative z-10">
+    <h2 class="sr-only">Core Competencies</h2>
     <div class="max-w-5xl mx-auto px-4">
         <div class="grid md:grid-cols-2 gap-8">
             <!-- Block 1: Core Backend & SaaS Architecture -->
-            <div class="dev-terminal tilt-effect">
+            <div class="dev-terminal tech-card tilt-effect">
                 <div class="dev-terminal-header">
                     <div class="dev-terminal-dots">
                         <span class="dev-terminal-dot close"></span>
@@ -50,7 +76,7 @@
             </div>
 
             <!-- Block 2: APIs & System Integration -->
-            <div class="dev-terminal tilt-effect">
+            <div class="dev-terminal tech-card tilt-effect">
                 <div class="dev-terminal-header">
                     <div class="dev-terminal-dots">
                         <span class="dev-terminal-dot close"></span>
@@ -70,8 +96,11 @@
     </div>
 </section>
 
+<!-- Fading Divider -->
+<div class="h-[2px] w-full max-w-5xl mx-auto bg-gradient-to-r from-transparent via-white/10 to-transparent my-8"></div>
+
 <!-- Featured Work Section -->
-<section class="py-20 border-t border-zinc-800">
+<section class="py-20 relative z-10">
     <div class="flex flex-col md:flex-row justify-between items-start md:items-end mb-12 gap-4">
         <div>
             <h2 class="text-3xl font-bold text-white tracking-tight">Featured Work</h2>
@@ -85,7 +114,7 @@
     <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
         {% for project in featured_projects %}
             <div class="tech-card tilt-effect overflow-hidden flex flex-col h-full">
-                <a href="{% url 'portfolio:detail' project.pk %}" class="block h-48 bg-zinc-900/50 backdrop-blur-sm relative overflow-hidden border-b border-zinc-800">
+                <a href="{% url 'portfolio:detail' project.pk %}" class="block aspect-video relative overflow-hidden border-b border-zinc-800">
                     {% if project.cover_image %}
                         <img src="{{ project.cover_image.url }}" alt="{{ project.title }}" class="w-full h-full object-cover filter brightness-90 hover:brightness-100 transition duration-300">
                     {% else %}
@@ -107,10 +136,40 @@
                 </div>
             </div>
         {% empty %}
-            <div class="col-span-3 text-center py-12 bg-zinc-900/10 backdrop-blur-sm rounded-lg border border-dashed border-zinc-800">
+            <div class="col-span-3 text-center py-12 bg-zinc-900/10 rounded-lg border border-dashed border-zinc-800">
                 <p class="text-zinc-500 text-sm font-mono">No featured projects found.</p>
             </div>
         {% endfor %}
+    </div>
+</section>
+
+<!-- Fading Divider -->
+<div class="h-[2px] w-full max-w-5xl mx-auto bg-gradient-to-r from-transparent via-white/10 to-transparent my-8"></div>
+
+<!-- Final CTA Section -->
+<section class="py-24 relative z-10">
+    <h2 class="sr-only">Contact</h2>
+    <div class="max-w-3xl mx-auto px-4">
+        <div class="dev-terminal tech-card tilt-effect">
+            <div class="dev-terminal-header">
+                <div class="dev-terminal-dots">
+                    <span class="dev-terminal-dot close"></span>
+                    <span class="dev-terminal-dot minimize"></span>
+                    <span class="dev-terminal-dot maximize"></span>
+                </div>
+                <span class="text-xs font-mono text-zinc-500">linkedin.py</span>
+            </div>
+            <div class="p-8 md:p-12 text-left">
+                <h3 class="font-bold text-white mb-3 text-2xl tracking-tight">Let's Stay Connected</h3>
+                <p class="text-zinc-400 leading-relaxed text-base mb-8 max-w-xl">
+                    Follow my professional updates and backend engineering projects.
+                </p>
+                <a href="https://linkedin.com/in/rjdebastiani" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center btn-tech-primary px-6 py-3 rounded-lg font-bold text-sm transition group">
+                    <svg class="w-4 h-4 mr-2 group-hover:scale-110 transition-transform" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+                    Connect on LinkedIn
+                </a>
+            </div>
+        </div>
     </div>
 </section>
 {% endblock %}

@@ -1,8 +1,8 @@
 /* Modern Tech/Django Inspired Dark Theme */
 :root {
     --bg-dark: #09090b; /* Zinc 950 */
-    --bg-panel: rgba(24, 24, 27, 0.65); /* Zinc 900 with transparency for glass */
-    --bg-panel-darker: rgba(15, 15, 17, 0.65);
+    --bg-panel: rgba(9, 9, 11, 0.4); /* Matches navbar opacity */
+    --bg-panel-darker: rgba(9, 9, 11, 0.6);
     --border-subtle: rgba(255, 255, 255, 0.08); /* Subtle glass edge */
     --border-active: rgba(255, 255, 255, 0.15); /* More prominent on hover */
     --color-django: #10b981; /* Emerald/Django Green */
@@ -13,9 +13,13 @@
 
 body {
     background-color: var(--bg-dark);
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='1.5' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.09'/%3E%3C/svg%3E");
+    background-repeat: repeat;
+    background-attachment: fixed;
     color: var(--text-primary);
     font-family: 'Plus Jakarta Sans', 'Inter', sans-serif;
     min-height: 100vh;
+    position: relative;
 }
 
 /* Custom Scrollbar */
@@ -43,6 +47,7 @@ body {
     border-radius: 0.5rem;
     transition: background-color 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
 }
+
 .tech-card:hover {
     border-color: var(--border-active);
     box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.7);
@@ -50,10 +55,6 @@ body {
 
 /* Terminal Mockup */
 .dev-terminal {
-    background: var(--bg-panel);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-    border: 1px solid var(--border-subtle);
     border-radius: 0.5rem;
     overflow: hidden;
 }
@@ -116,13 +117,13 @@ body {
 }
 
 .btn-tech-secondary {
-    background-color: transparent;
+    background-color: #18181b;
     color: var(--text-primary);
     border: 1px solid var(--border-subtle);
     transition: all 0.2s ease;
 }
 .btn-tech-secondary:hover {
-    background-color: var(--bg-panel);
+    background-color: #27272a;
     border-color: var(--border-active);
 }
 
@@ -138,6 +139,3 @@ body {
     background-color: rgba(16, 185, 129, 0.1);
     border-color: var(--color-django);
 }
-
-
-
