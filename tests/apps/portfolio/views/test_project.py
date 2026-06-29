@@ -25,7 +25,7 @@ class TestProjectViews:
         assert response.status_code == 200
         assert "projects" in response.context
         projects = response.context["projects"]
-        assert len(projects) == 6  # Should return all projects (active and inactive)
+        assert len(projects) == 4  # Should return only active/featured projects
 
     def test_project_detail_view(self, client):
         """Test that ProjectDetailView returns the correct project."""
