@@ -11,7 +11,8 @@ class ProjectListView(ListView):
     def get_queryset(self):
         # Show only featured/active projects, ordered by most recent
         return (
-            Project.objects.select_related("category")
+            Project.objects.filter(is_featured=True)
+            .select_related("category")
             .prefetch_related("technologies")
             .order_by("-started_at")
         )

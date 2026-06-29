@@ -7,7 +7,6 @@ from apps.portfolio.models import Project
 class StaticViewSitemap(Sitemap):
     """Sitemap for static pages like Home and About"""
 
-    priority = 0.5
     changefreq = "monthly"
 
     def items(self):
@@ -16,6 +15,14 @@ class StaticViewSitemap(Sitemap):
 
     def location(self, item):
         return reverse(item)
+
+    def priority(self, item):
+        priorities = {
+            "pages:home": 1.0,
+            "portfolio:list": 0.9,
+            "pages:about": 0.8,
+        }
+        return priorities.get(item, 0.5)
 
 
 class ProjectSitemap(Sitemap):
