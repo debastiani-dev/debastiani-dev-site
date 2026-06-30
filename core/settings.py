@@ -38,14 +38,17 @@ ALLOWED_HOSTS = config(
 # TRUSTED ORIGINS (Crucial for Admin Login behind Nginx/HTTPS)
 # Django 4.0+ requires the scheme (https://) to be included.
 # Example env: CSRF_TRUSTED_ORIGINS=https://debastiani.dev,https://www.debastiani.dev
-CSRF_TRUSTED_ORIGINS = config("CSRF_TRUSTED_ORIGINS", default="http://localhost").split(
-    ","
+CSRF_TRUSTED_ORIGINS = config(
+    "CSRF_TRUSTED_ORIGINS",
+    default="http://localhost",
+    cast=lambda v: [s.strip() for s in v.split(",") if s.strip()],
 )
 
 # PRODUCTION SECURITY HARDENING
 if not DEBUG:
     # 1. Proxy Handling (The most critical setting for Docker/Nginx)
-    # This tells Django: "If the header X-Forwarded-Proto says 'https', treat the request as secure."
+    # This tells Django: "If the header X-Forwarded-Proto says 'https',
+    # treat the request as secure."
     # Without this, you will get infinite redirect loops or CSRF verification failures.
     SECURE_PROXY_SSL_HEADER = ("HTTP_X_FORWARDED_PROTO", "https")
 

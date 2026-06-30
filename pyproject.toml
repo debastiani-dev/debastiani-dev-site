@@ -51,6 +51,7 @@ pylint = "^4.0.4"
 model-bakery = "^1.23.2"
 django-stubs = "^5.2.9"
 pylint-django = "^2.7.0"
+pytest-cov = "^7.1.0"
 
 [tool.mypy]
 plugins = ["mypy_django_plugin.main"]

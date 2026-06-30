@@ -139,3 +139,18 @@ body {
     background-color: rgba(16, 185, 129, 0.1);
     border-color: var(--color-django);
 }
+
+/* Typography for Project Descriptions */
+.prose-project p {
+    margin-bottom: 1.75rem;
+    color: var(--text-secondary);
+    line-height: 1.8;
+}
+.prose-project p:first-of-type {
+    color: var(--text-primary);
+    font-size: 1.05em;
+    font-weight: 500;
+}
+.prose-project p:last-of-type {
+    margin-bottom: 0;
+}

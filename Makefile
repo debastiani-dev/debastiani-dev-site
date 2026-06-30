@@ -19,10 +19,6 @@ ifdef GITHUB_SHA
   SOURCE_TAG ?= ${GITHUB_SHA}
 endif
 
-PYTHON_FILES := $(shell find . -type f -name "*.py" ! -path "*/\.*" ! -path "*/migrations/*" ! -path "*/venv/*" ! -path "*/env/*")
-ifdef subdirectory
-PYTHON_FILES := $(shell find $(subdirectory) -type f -name "*.py" ! -path "*/\.*" ! -path "*/migrations/*" ! -path "*/venv/*" ! -path "*/env/*")
-endif
 
 ## Help for all Targets
 .PHONY: help
@@ -96,37 +92,38 @@ dev/startapp:
 		echo "${RED}Error: app name is required. Usage: make dev/startapp app=myapp${RESET}"; \
 		exit 1; \
 	fi
+	mkdir -p apps/$(app)
 	docker compose exec web python manage.py startapp $(app) apps/$(app)
 
 ## Checks code with isort
 .PHONY: lint-isort
 lint-isort:
 	@echo "Linting isort..."
-	-@poetry run isort --profile='black' --check-only --diff $(PYTHON_FILES)
+	-@poetry run isort --check-only --diff .
 
 ## Checks code with black
 .PHONY: lint-black
 lint-black:
 	@echo "Linting black..."
-	-@poetry run black --check --preview $(PYTHON_FILES)
+	-@poetry run black --check .
 
 ## Checks code with flake8
 .PHONY: lint-flake8
 lint-flake8:
 	@echo "Linting flake8..."
-	-@poetry run flake8 --statistics --exit-zero $(PYTHON_FILES)
+	-@poetry run flake8 .
 
 ## Checks code with mypy
 .PHONY: lint-mypy
 lint-mypy:
 	@echo "Linting mypy..."
-	-@poetry run mypy $(PYTHON_FILES)
+	-@poetry run mypy .
 
 ## Checks code with pylint
 .PHONY: lint-pylint
 lint-pylint:
 	@echo "Linting pylint..."
-	-@poetry run pylint --rcfile=.pylintrc $(PYTHON_FILES) 
+	-@poetry run pylint --rcfile=.pylintrc apps core tests
 
 ## Checks code with all linters of the project
 .PHONY: lint
@@ -136,19 +133,19 @@ lint: lint-isort lint-black lint-flake8 lint-mypy lint-pylint
 .PHONY: format-isort
 format-isort:
 	@echo "Running isort..."
-	poetry run isort --profile='black' $(PYTHON_FILES)
+	poetry run isort .
 
 ## Formats code with black
 .PHONY: format-black
 format-black:
 	@echo "Running black..."
-	poetry run black --preview -v $(PYTHON_FILES)
+	poetry run black .
 
 ## Formats code with autoflake8
 .PHONY: format-autoflake8
 format-autoflake8:
 	@echo "Running autoflake8..."
-	poetry run autoflake8 --in-place -vv $(PYTHON_FILES)
+	poetry run autoflake8 --in-place -r --exclude migrations apps core tests
 
 ## Formats code with formatters of the project
 .PHONY: format
@@ -157,13 +154,14 @@ format: format-autoflake8 format-isort format-black
 ## Runs pre-commit hooks
 .PHONY: run-pre-commit-hook
 run-pre-commit-hook:
-	bash .git/hooks/pre-commit
+	poetry run pre-commit run --all-files
 
 ## Runs all tests of the project (use: make pytest opts="-k nome_do_teste" for specific tests)
 .PHONY: pytest
 pytest:
 	@echo "${GREEN}Running tests with pytest${RESET}"
 	docker compose \
+	-p debastiani_test \
 	-f docker-compose.test.yml \
 	run --rm web python -m pytest -v --tb=short --reuse-db --cache-clear $(opts)
 
@@ -172,6 +170,7 @@ pytest:
 pytest-cov:
 	@echo "${GREEN}Running tests with coverage report${RESET}"
 	docker compose \
+	-p debastiani_test \
 	-f docker-compose.test.yml \
 	run --rm web python -m pytest --cov=apps --cov-report=term-missing -v --tb=short --reuse-db --cache-clear $(opts)
 
@@ -180,4 +179,4 @@ pytest-cov:
 .PHONY: dev/create-admin
 dev/create-admin:
 	@echo "${GREEN}Creating superuser 'admin'${RESET}"
-	docker compose exec -e DJANGO_SUPERUSER_PASSWORD=admin web python manage.py createsuperuser --noinput --username admin --email admin@example.com || true
+	docker compose exec -e DJANGO_SUPERUSER_PASSWORD=admin web python manage.py createsuperuser --noinput --email admin@example.com --first_name Admin --last_name User || true

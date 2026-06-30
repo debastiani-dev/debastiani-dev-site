@@ -1,6 +1,7 @@
 [MASTER]
 load-plugins=pylint_django
 django-settings-module=core.settings
+ignore=migrations
 
 [MESSAGES CONTROL]
 disable=C0114,C0115,C0116,R0903

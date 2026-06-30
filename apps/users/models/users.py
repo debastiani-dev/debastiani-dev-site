@@ -78,4 +78,4 @@ class User(AbstractBaseUser, PermissionsMixin, BaseModel):
 
     @property
     def fullname(self) -> str:
-        return f"{self.first_name.title()} {self.last_name.title()}"
+        return f"{self.first_name} {self.last_name}".title()

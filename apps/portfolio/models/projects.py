@@ -11,8 +11,8 @@ class ProjectCategory(BaseModel):
         verbose_name_plural = "Project Categories"
         app_label = "portfolio"
 
-    def __str__(self):
-        return self.name
+    def __str__(self) -> str:
+        return f"{self.name}"
 
 
 class ProjectTechnology(BaseModel):
@@ -23,8 +23,8 @@ class ProjectTechnology(BaseModel):
         verbose_name_plural = "Project Technologies"
         app_label = "portfolio"
 
-    def __str__(self):
-        return self.name
+    def __str__(self) -> str:
+        return f"{self.name}"
 
 
 class Project(BaseModel):
@@ -52,5 +52,5 @@ class Project(BaseModel):
         verbose_name_plural = "Projects"
         app_label = "portfolio"
 
-    def __str__(self):
-        return self.title
+    def __str__(self) -> str:
+        return f"{self.title}"
